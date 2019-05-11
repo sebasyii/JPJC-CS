@@ -1,4 +1,10 @@
 def luhn_verify(id_number):
+    """luhn_verify Check if the ID number is luhn valid or not
+    
+    Arguments:
+        id_number {integer} -- Takes in a number for checking
+    """
+
     right_digit = str(id_number)[-1]
     left_digit = str(id_number)[:-1]
     num_arr = []
