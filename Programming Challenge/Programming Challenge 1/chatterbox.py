@@ -1,24 +1,42 @@
+#Programming Challenge 1: Chatterbox
 
-first_hello = True
+def main():
+    originalWords = getInput()
+    chatterbot(originalWords)
 
-while True:
-    user_input = input("Chatterbox: ")
-    words = user_input.split()
-    print("Chatterbot: ", end="")
+def chatterbot(wordList):
+    firstHello = False #keep track of first occurence of "hello"
+    for i in range(len(wordList)):
+        print("Chatterbot: ", wordList[i])
+        if ("hello" in wordList[i].lower()) and (firstHello == (False)):
+            print("Chatterbot: Hi, how are you?")
+            firstHello = True
 
-    if "hello" in user_input.lower() and first_hello:
-        print("Hi, how are you?\n")
-        first_hello = False
+        elif ("hello" in wordList[i].lower()) and (firstHello == (True)):
+            print("Chatterbot: Hello again, welcome back!")
 
-    elif "hello" in user_input.lower() and not first_hello:
-        print("Hello again, welcome back!\n")
+        elif ("thank you" in wordList[i].lower()) or ("thanks" in wordList[i].lower()):
+            print("Chatterbot: You are most welcome.")
 
-    elif "thanks" in user_input.lower() or "thank you" in user_input.lower():
-        print("You are most welcome.\n")
+        elif ("missed" in wordList[i].lower()):
+            print("Chatterbot: You missed me? I really missed you too.")
 
-    elif (len(words) >= 3 and words[0].lower() == "i" and "you" in words[2].lower()):
-        verb = words[1]
-        print("You", verb, "me? I really", verb, "you too.\n")
+        elif ("I" in wordList[i] and "you" in wordList[i].lower()):
+            sentence = wordList[i].split()
+            if sentence[0] == "I" and ("you" in sentence[2].lower()):
+                print("Chatterbot: You", sentence[1], "me? I really", sentence[1], "you too.")
 
-    else:
-        print("Sorry, I do not understand...\n")
+        else:
+            print("Chatterbot: Sorry, I do not understand...")
+
+        print()
+
+def getInput(): #read data in file
+    infile = open("chatterbot.txt","r") #open file
+    originalWords = []
+    for line in infile: #for each line in file, read data line by line
+        originalWords.append(line[:-1])
+    infile.close() #close file
+    return originalWords
+
+main()
