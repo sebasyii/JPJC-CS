@@ -28,3 +28,7 @@ Collection of examples and assignment code written in Python 3 for H2 Computing 
    - /Exam Questions/JC2 Common Test 2019/Credit Card Checker
    - /Exam Questions/JC2 Common Test 2019/Polynomials
    - /Exam Questions/JC2 Common Test 2019/Tic-tac-toe
+
+#### [0.3] - 
+ - Added Solutions to Programming Challenges
+    - /Programming Challenges/Programming Challenge 11/Country Binary Tree
