@@ -71,12 +71,15 @@ class PrintQueue:
         else:
             print("             |{0:^20}|{1:^20}|{2:^20}|".format(
                 "USER ID", "TERMINAL NUMBER", "FILE SIZE"))
-
+            '''
             for print_job in self.__print_queue[self.__front:self.__rear]:
                 print("Print queue: |{0:^20}|{1:^20}|{2:^20}|".format(str(print_job.get_user_id(
                 )), str(print_job.get_terminal_number()), str(print_job.get_file_size())))
+            '''
+
             print("")
-            print("Current queue is: |{0:^20}|{1:^20}|{2:^20}|".format(str(self.__print_queue[self.__front].get_user_id()), str(self.__print_queue[self.__front].get_terminal_number()), str(self.__print_queue[self.__front].get_file_size())))
+            print("Current queue is: |{0:^20}|{1:^20}|{2:^20}|".format(str(self.__print_queue[self.__front].get_user_id()), str(
+                self.__print_queue[self.__front].get_terminal_number()), str(self.__print_queue[self.__front].get_file_size())))
             print()
 
 
@@ -119,8 +122,13 @@ def main():
         elif user_choice == "3":
             print("\n\n")
             Room16.display_print_job()
-        else:
+
+        elif user_choice == "4":
             break
+        else:
+            print("\n\n")
+            print("Please enter a valid option")
+            continue
 
 
 main()
