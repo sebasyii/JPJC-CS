@@ -1,47 +1,65 @@
-class BookRec():
+class BookRec:
     def __init__(self, ID=None, title=None):
         self.__BookID = str(ID)
         self.__Title = str(title)
-        self.__pointer = None
+        self.__Pointer = None
+
+    def getBookID(self):
+        return self.__BookID
+
+    def getTitle(self):
+        return self.__Title
+
+    def getPointer(self):
+        return self.__Pointer
+
+    def setBookID(self, BookID):
+        self.__BookID = BookID
+
+    def setTitle(self, Title):
+        self.__Title = Title
+
+    def setPointer(self, Pointer):
+        self.__Pointer = Pointer
 
 
 class Linkedlist:
     def __init__(self):
-        self.__start = None
+        self.__Start = None
 
     def __str__(self):
         output = ""
-        temp = self.__start
+        temp = self.__Start
         i = 1
         while temp is not None:
-            output += '{0}{1}{2}'.format(i, temp.getBookID(), temp.gettitle)
-            temp = temp.getpointer()
+            output += '{0}{1}{2}'.format(i, temp.getBookID(), temp.getTitle())
+            temp = temp.getPointer()
             i += 1
         output += " None"
         return output
 
-    def isempty(self):
-        return self.__start is None
+    def isEmpty(self):
+        return self.__Start is None
 
     def addnode(self, id, title):
-        newwnode = BookRec(ID, title)
-        if self.isempty():
-            self.__start = None
+        newNode = BookRec(id, title)
+        if self.isEmpty():
+            self.__Start = None
 
         else:
-            temp = self.start
-            self.start = newnode
-            newnode.setpointer(temp)
+            temp = self.__Start
+            self.start = newNode
+            newNode.setPointer(temp)
 
     def delnode(self, id):
-        if self.start is not None:
+        if self.__Start is not None:
             prev = None
-            current = self.start
-            while current.getbookid() != id and current.getpointer() is not none:
+            current = self.__Start
+            while current.getBookID() != id and current.getPointer() is not None:
                 prev = current
-                current = current.getpointer()
+                current = current.getPointer()
             if prev is None:
-                if self.start.getbookid() == id:
-                    self.start = current.getpointer()
-            elif current.getbookid() == id:
-                prev.setpointer(current.getpointer())
+                if self.__Start.getBookID() == id:
+                    self.__Start = current.getPointer()
+            elif current.getBookID() == id:
+                prev.setPointer(current.getPointer())

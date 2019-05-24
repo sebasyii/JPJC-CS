@@ -42,7 +42,6 @@ def encoder():
     mode = 0
     user_input = input("Enter your sentence(First letter must be uppercase): ")
     text_list = [letters for letters in user_input]
-    print(text_list)
     for text in text_list:
         if text in uppercase_alphabet:
             if mode == 1:
@@ -53,7 +52,6 @@ def encoder():
 
             mode = 0
             index_element = uppercase_alphabet.index(text)
-            print(uppercase_alphabet[index_element])
             encoded_number = (index_element+1) + 27 * 1
             encoded_numbers = encoded_numbers + str(encoded_number) + ","
         elif text in lowercase_alphabet:
@@ -65,7 +63,6 @@ def encoder():
                 encoded_numbers = encoded_numbers + str(0) + ","
             mode = 1
             index_element = lowercase_alphabet.index(text)
-            print(lowercase_alphabet[index_element])
             encoded_number = (index_element+1) + 27 * 1
             encoded_numbers = encoded_numbers + str(encoded_number) + ","
         elif text in punctuation_list:
@@ -76,7 +73,6 @@ def encoder():
                 encoded_numbers = encoded_numbers + str(0) + ","
             mode = 2
             index_element = punctuation_list.index(text)
-            print(punctuation_list[index_element])
             encoded_number = (index_element+1) + 9 * 1
             encoded_numbers = encoded_numbers + str(encoded_number) + ","
     return encoded_numbers[:-1]
@@ -87,7 +83,6 @@ def encoder_random():
     mode = 0
     user_input = input("Enter your sentence(First letter must be uppercase): ")
     text_list = [letters for letters in user_input]
-    print(text_list)
     for text in text_list:
         if text in uppercase_alphabet:
             if mode == 1:
@@ -98,7 +93,6 @@ def encoder_random():
 
             mode = 0
             index_element = uppercase_alphabet.index(text)
-            print(uppercase_alphabet[index_element])
             encoded_number = (index_element+1) + 27 * randint(1, 10)
             encoded_numbers = encoded_numbers + str(encoded_number) + ","
         elif text in lowercase_alphabet:
@@ -110,7 +104,6 @@ def encoder_random():
                 encoded_numbers = encoded_numbers + str(0) + ","
             mode = 1
             index_element = lowercase_alphabet.index(text)
-            print(lowercase_alphabet[index_element])
             encoded_number = (index_element+1) + 27 * randint(1, 10)
             encoded_numbers = encoded_numbers + str(encoded_number) + ","
         elif text in punctuation_list:
@@ -121,7 +114,6 @@ def encoder_random():
                 encoded_numbers = encoded_numbers + str(0) + ","
             mode = 2
             index_element = punctuation_list.index(text)
-            print(punctuation_list[index_element])
             encoded_number = (index_element+1) + 9 * randint(1, 10)
             encoded_numbers = encoded_numbers + str(encoded_number) + ","
     return encoded_numbers[:-1]

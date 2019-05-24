@@ -1,11 +1,16 @@
 # JPJC-CS
+
 ---
+
 ## H2 Computing
+
 ---
 Collection of examples and assignment code written in Python 3 for H2 Computing in Jurong Pioneer Junior College
 
-### Changelog:
+### Changelog
+
 ---
+
 #### [0.1] - 30/03/2019
 
 - Initial Release
@@ -34,3 +39,8 @@ Collection of examples and assignment code written in Python 3 for H2 Computing 
 
 - Added Solutions to Programming Challenges
   - /Programming Challenges/Programming Challenge 11/Country Binary Tree
+  - /Programming Challenges/Programming Challenge 2/Message Decoder
+- Work in Progress
+  - /Programming Challenges/Programming Challenge 6/Hex Denary
+  - /Programming Challenges/Programming Challenge 7/Hashtable
+  - /Programming Challenges/Programming Challenge 8/Hashtable Chaining
