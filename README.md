@@ -44,3 +44,14 @@ Collection of examples and assignment code written in Python 3 for H2 Computing 
   - /Programming Challenges/Programming Challenge 6/Hex Denary
   - /Programming Challenges/Programming Challenge 7/Hashtable
   - /Programming Challenges/Programming Challenge 8/Hashtable Chaining
+
+#### [0.4] - 26/06/2019
+
+- Added Solutions to Programming Challenges
+  - /Programming Challenges/Programming Challenge 7/Hashtable
+  - /Programming Challenges/Programming Challenge 8/Hashtable Chaining
+- Work in Progress
+  - /Programming Challenges/Programming Challenge 6/Hex Denary
+  - /Exam Questions/JC2 Common Test 2019/Marks
+  - /Exam Questions/JC2 Common Test 2019/Credit Card Checker
+  - /Exam Questions/JC2 Common Test 2019/Polynomials

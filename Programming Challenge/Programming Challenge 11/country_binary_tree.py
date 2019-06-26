@@ -66,7 +66,7 @@ class BinaryTree:
                     self.__NextFreePosition)
 
         NewNextFreePosition = self.__ThisTree[self.__NextFreePosition].getLeftP(
-        )
+        ) #set to next point
         self.__ThisTree[self.__NextFreePosition].setLeftP(0)
         self.__ThisTree[self.__NextFreePosition].setData(NewTreeItem)
         self.__NextFreePosition = NewNextFreePosition
@@ -91,17 +91,10 @@ class BinaryTree:
 
 def main():
     tree = BinaryTree()
-    list_of_countries = ['INDIA', 'NEPAL', 'MALAYSIA',
-                         'SINGAPORE', 'BURMA', 'CANADA', 'LATVIA']
-    #NewItem = input('Enter a new item:')
-    '''
+    NewItem = input('Enter a new item:')
     while NewItem != 'XXX':
         tree.AddItemToBinaryTree(NewItem)
         NewItem = input('Enter a new item: ')
-    '''
-    for country in list_of_countries:
-        tree.AddItemToBinaryTree(country)
-
     tree.OutputData()
     tree.InOrderTraversal(3)
 
