@@ -55,3 +55,8 @@ Collection of examples and assignment code written in Python 3 for H2 Computing 
   - /Exam Questions/JC2 Common Test 2019/Marks
   - /Exam Questions/JC2 Common Test 2019/Credit Card Checker
   - /Exam Questions/JC2 Common Test 2019/Polynomials
+
+#### [0.5] - 03/07/2019
+
+- Added Solutions to Programming Challenges
+  - /Programming Challenges/Programming Challenge 12/Name Binary Tree
