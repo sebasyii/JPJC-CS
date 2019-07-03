@@ -70,3 +70,8 @@ Collection of examples and assignment code written in Python 3 for H2 Computing 
 - Work in Progress
   - /Programming Challenges/Programming Challenge 6/Hex to Denary
   - /Programming Challenges/Programming Challenge 9/Brackets
+
+#### [0.5.2] - 04/07/2019
+
+- Added Solution Fixes to Programming Challenges
+  - /Programming Challenges/Programming Challenge 6/hEX TO Denary

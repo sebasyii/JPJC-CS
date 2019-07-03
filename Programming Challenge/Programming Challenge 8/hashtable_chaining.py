@@ -48,7 +48,7 @@ class Linkedlist:
 
         else:
             temp = self.__Start
-            self.start = newNode
+            self.__Start = newNode
             newNode.setPointer(temp)
 
     def DeleteNode(self,BookID):
