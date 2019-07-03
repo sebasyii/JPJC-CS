@@ -74,4 +74,5 @@ Collection of examples and assignment code written in Python 3 for H2 Computing 
 #### [0.5.2] - 04/07/2019
 
 - Added Solution Fixes to Programming Challenges
-  - /Programming Challenges/Programming Challenge 6/hEX TO Denary
+  - /Programming Challenges/Programming Challenge 6/Hex To Denary
+  - /Programming Challenges/Programming Challenge 7/Hashtable

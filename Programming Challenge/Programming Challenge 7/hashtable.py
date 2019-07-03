@@ -25,7 +25,7 @@ class Hashtable:
     def insert(self, data):
         # Convert to index
         hashcode = self.hashfunction(data)
-
+        print(hashcode)
         # if the hash location is not taken, insert the data
         if self.__data[hashcode] is None:
             self.__data[hashcode] = data
@@ -37,7 +37,6 @@ class Hashtable:
             while self.__data[nextslot] is not None:
                 # if not rehash again
                 nextslot = self.rehash(nextslot)
-                return
 
             # change data
             self.__data[nextslot] = data
@@ -55,20 +54,19 @@ class Hashtable:
                     return
             return self.hashfunction(data)
 
-file = open("KEYS2.txt", "r")
+id_file = open("KEYS2.txt", "r")
 
 h1 = Hashtable()
-
-for i in file:
-    i = i[:-1]
-    print(i)
-    h1.insert(i)
+for id in id_file:
+    id = id[:-1]
+    h1.insert(id)
 h1.display()
 
-file.close()
 
-##id_number = input("Enter an ID Number: ")
-##print(h1.search(id_number))
+id_file.close()
+
+id_number = input("Enter an ID Number: ")
+print(h1.search(id_number))
 
 
 
