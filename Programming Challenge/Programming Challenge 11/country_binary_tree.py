@@ -24,12 +24,13 @@ class Node:
 
 
 class BinaryTree:
-    def __init__(self, limit=20):
+    def __init__(self, limit=5):
+        self.__limit = limit
         self.__ThisTree = [None] + [Node("") for node in range(limit)]
         # Set Pointers
-        for ptr in range(1, limit):
+        for ptr in range(1, self.__limit):
             self.__ThisTree[ptr].setLeftP(ptr+1)
-        self.__ThisTree[limit] = Node("")
+        self.__ThisTree[self.__limit] = Node("")
         self.__Root = 0
         self.__NextFreePosition = 1
 
@@ -72,12 +73,15 @@ class BinaryTree:
         self.__NextFreePosition = NewNextFreePosition
 
     def OutputData(self):
-        print('Root: ' + str(self.__Root))
-        print('NextFreePosition: ' + str(self.__NextFreePosition))
-        print('Tree:')
-        for i in range(1, 21):
-            CurNode = self.__ThisTree[i]
-            print(str(i) + ': ' + str(CurNode.getData()))
+        output = "ROOT = {}\n".format(self.__Root)
+        output = output + "Nextfree={}\n".format(self.__NextFreePosition)
+        output = output + \
+            "{:^5}{:^10}{:^5}{:^5}\n".format(
+                "Index", "Data", "LeftPtr", "RightPtr")
+        for i in range(1, self.__limit):
+            output = output + "{:^5}{:^10}{:^5}{:^5}\n".format(i, self.__ThisTree[i].getData(
+            ), self.__ThisTree[i].getLeftP(), self.__ThisTree[i].getRightP())
+        return output
 
     def InOrderTraversal(self, index):
         if self.__Root == 0:
@@ -95,7 +99,7 @@ def main():
     while NewItem != 'XXX':
         tree.AddItemToBinaryTree(NewItem)
         NewItem = input('Enter a new item: ')
-    tree.OutputData()
+    print(tree.OutputData())
     tree.InOrderTraversal(3)
 
 

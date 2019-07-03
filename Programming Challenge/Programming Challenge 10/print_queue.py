@@ -34,7 +34,7 @@ class PrintJob:
 
 
 class PrintQueue:
-    def __init__(self, max_size=3):
+    def __init__(self, max_size=5):
         self.__front = 0
         self.__rear = 0
         self.__max_size = max_size
@@ -71,11 +71,6 @@ class PrintQueue:
         else:
             print("             |{0:^20}|{1:^20}|{2:^20}|".format(
                 "USER ID", "TERMINAL NUMBER", "FILE SIZE"))
-            '''
-            for print_job in self.__print_queue[self.__front:self.__rear]:
-                print("Print queue: |{0:^20}|{1:^20}|{2:^20}|".format(str(print_job.get_user_id(
-                )), str(print_job.get_terminal_number()), str(print_job.get_file_size())))
-            '''
 
             print("")
             print("Current queue is: |{0:^20}|{1:^20}|{2:^20}|".format(str(self.__print_queue[self.__front].get_user_id()), str(

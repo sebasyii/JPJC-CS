@@ -60,3 +60,13 @@ Collection of examples and assignment code written in Python 3 for H2 Computing 
 
 - Added Solutions to Programming Challenges
   - /Programming Challenges/Programming Challenge 12/Name Binary Tree
+
+#### [0.5.1] - 03/07/2019
+
+- Added Solution Fixes to Programming Challenges
+  - /Programming Challenges/Programming Challenge 12/Name Binary Tree
+  - /Programming Challenges/Programming Challenge 11/Country Binary Tree
+  - /Programming Challenges/Programming Challenge 10/PrintQueue
+- Work in Progress
+  - /Programming Challenges/Programming Challenge 6/Hex to Denary
+  - /Programming Challenges/Programming Challenge 9/Brackets

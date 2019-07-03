@@ -41,25 +41,91 @@ class Linkedlist:
     def isEmpty(self):
         return self.__Start is None
 
-    def addnode(self, id, title):
+    def AddNode(self, id, title):
         newNode = BookRec(id, title)
         if self.isEmpty():
-            self.__Start = None
+            self.__Start = newNode
 
         else:
             temp = self.__Start
             self.start = newNode
             newNode.setPointer(temp)
 
-    def delnode(self, id):
-        if self.__Start is not None:
-            prev = None
-            current = self.__Start
-            while current.getBookID() != id and current.getPointer() is not None:
-                prev = current
+    def DeleteNode(self,BookID):
+        if not self.IsEmpty():         #Linkedlist is empty
+            previous = None
+            current = self.__start
+            while current.getBookID() != BookID and current.getPointer() is not None:
+                previous = current
                 current = current.getPointer()
-            if prev is None:
-                if self.__Start.getBookID() == id:
-                    self.__Start = current.getPointer()
-            elif current.getBookID() == id:
-                prev.setPointer(current.getPointer())
+            if previous is None:               #firstnode to be removed
+                self.__start = current.getPointer()
+            elif current.getBookID() == BookID:
+                previous.setPointer(current.getPointer())
+            else: #data doesnt exist within the table
+                print(BookID,"not found. Nothing to remove")
+        else: #empty linked list
+            print("No nodes in the the linked list. Nothing to remove.")
+
+    def SearchNode(self,BookID):
+        temp = self.__start
+        while temp is not None:
+            if temp.getBookID() == BookID:
+                return True
+            temp = temp.getPointer()
+        return False
+    
+    def DisplayLinkedList(self):
+        print("|{:^10}|{:^15}|{:^35}|{:^15}|".format("Index","BookID","Title","Pointer"))
+        print("-"*80)
+        for i in range(len(self.__ArrayOfNodes)):
+            print("|{:^10}|{:^15}|{:^35}|{:^15}|".format(i,self._ArrayOfNodes[i].getBookID(),self.ArrayOfNodes[i].getTitle(),self._ArrayOfNodes[i].getPointer()))
+        print("\n")
+        print("Start = ",self.__start)
+        print("NextFree = ",self.__nextfree)
+    
+class HashTable:
+    def _init_(self,size):
+        self.__Size = size
+        self.__Slots = [LinkedList() for i in range(size)]
+
+    def Hash(self,BookID):
+        array = []
+        total = 0
+        for each in BookID:
+            array.append(each)
+        for i in range(len(array)):
+            total = total + ord(array[i])
+        ASCII = total%self.__size+1
+        return ASCII
+
+    def Display(self):
+        print("  |{:^10}|{:^25}|".format("BookID","Title"))
+        print(" ","_"*37)
+        for i in range(self.__size):
+            self.__Book[i].DisplayLinkedList()
+            print(" ","_"*37)
+
+    def Put(self,BookID,Title):
+        ASCII = self.Hash(BookID)
+        self.__Book[ASCII].AddNode(BookID,Title)
+
+    def Remove(self,BookID):
+        ASCII = self.Hash(BookID)
+        self.__Book[ASCII].DeleteNode(BookID)
+
+    def Search(self,BookID):
+        ASCII = self.Hash(BookID)
+        self.__Book[ASCII].SearchNode(BookID)
+        
+
+l = HashTable(17)
+l.Put("CS733","Basic algorithms")
+l.Put("AB944","Master Computing")
+l.Put("KS293","Data structures")
+l.Put("BK232","Programming exercises")
+l.Put("PK199","Testing Python")
+l.Display()
+l.Remove("AB944")
+l.Search("KS293")
+l.Display()
