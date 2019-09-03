@@ -5,6 +5,7 @@
 ## H2 Computing
 
 ---
+
 Collection of examples and assignment code written in Python 3 for H2 Computing in Jurong Pioneer Junior College
 
 ### Changelog
@@ -76,3 +77,13 @@ Collection of examples and assignment code written in Python 3 for H2 Computing 
 - Added Solution Fixes to Programming Challenges
   - /Programming Challenges/Programming Challenge 6/Hex To Denary
   - /Programming Challenges/Programming Challenge 7/Hashtable
+
+### [0.6] - 04/09/2019
+
+- Added Solutions to Programming Challenges
+  - /Programming Challenges/Programming Challenge 16/Robot
+  - /Programming Challenges/Programming Challenge 17/Puzzle
+  - /Programming Challenges/Programming Challenge 18/Hashed Name
+  - /Programming Challenges/Programming Challenge 19/Maze
+  - /Programming CHallenges/Programming Challenge 20/Connect4
+  - /Programming Challenges/Programming Challenge 21/Linear Equation
