@@ -87,3 +87,4 @@ Collection of examples and assignment code written in Python 3 for H2 Computing 
   - /Programming Challenges/Programming Challenge 19/Maze
   - /Programming CHallenges/Programming Challenge 20/Connect4
   - /Programming Challenges/Programming Challenge 21/Linear Equation
+  - /Programming Challenges/Programming Challenge 22/Russian Peasant Algorithm
