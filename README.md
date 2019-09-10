@@ -88,3 +88,10 @@ Collection of examples and assignment code written in Python 3 for H2 Computing 
   - /Programming CHallenges/Programming Challenge 20/Connect4
   - /Programming Challenges/Programming Challenge 21/Linear Equation
   - /Programming Challenges/Programming Challenge 22/Russian Peasant Algorithm
+
+### [0.6.1] - 11/09/2019
+
+  - Added Files to Programming Challenges
+    - /Programming Challenges
+    - /ASP
+    - /JC2 MYE
