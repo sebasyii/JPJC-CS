@@ -41,7 +41,10 @@ class Linkedlist:
     def AddNode(self):
         NewItem = input("Enter item to add: ")
         self.__Node[self.__NextFree].SetDataValue(NewItem)
+
+        # If it is empty
         if self.__Start == 0:
+            # Change self.__NextFree to next pointer
             self.__Start = self.__NextFree
             Temp = self.__Node[self.__NextFree].GetPointerValue()
             self.__Node[self.__NextFree].SetPointerValue(0)
@@ -52,6 +55,8 @@ class Linkedlist:
             # The position at which to insert the new item
             Temp = self.__Node[self.__NextFree].GetPointerValue()
 
+
+            # If the alphabet - input is smaller than than the alphabet in the list
             if NewItem < self.__Node[self.__Start].GetDataValue():
                 self.__Node[self.__NextFree].SetPointerValue(self.__Start)
                 self.__Start = self.__NextFree

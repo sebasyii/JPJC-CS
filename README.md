@@ -91,7 +91,15 @@ Collection of examples and assignment code written in Python 3 for H2 Computing 
 
 ### [0.6.1] - 11/09/2019
 
-  - Added Files to Programming Challenges
-    - /Programming Challenges
-    - /ASP
-    - /JC2 MYE
+- Added Files to Programming Challenges
+  - /Programming Challenges
+  - /ASP
+  - /JC2 MYE
+
+### [0.7] - 14/09/2019
+
+- Add More Solutions and comments to code
+  - Programming Challenge 13
+  - Programming Challenge 14
+  - Refactor Message Decoder(Programming Challenge 2)
+  - Added comments to Fruits Linked List

@@ -33,8 +33,8 @@ def menu():
                 print("Invalid licence type selected.")
                 continue
             print(key, "licence key issued.")
-            outfile = open("LICENCE-KEYS.txt", "r")
-            outfile.write(key)
+            outfile = open("LICENCE-KEYS.txt", "a")
+            outfile.write(str(key))
             outfile.write('\n')
             outfile.close()
             infile = open("LICENCE-KEYS.txt", "r")
@@ -52,6 +52,20 @@ def menu():
             for eachKey in licenceList:
                 if userKey == eachKey[0:10]:
                     keyIndex = licenceList.index(eachKey)
+                    if int(licenceList[keyIndex][-3:-1]) == 3:
+                        if int(licenceList[keyIndex][-1:]) == 1:
+                            licenceList[keyIndex] = licenceList[keyIndex][:-2] + ' 2'
+                        elif int(licenceList[keyIndex][-1:]) == 2:
+                            licenceList[keyIndex] = licenceList[keyIndex][:-2] + ' 3'
+                        else:
+                            print(f"{licenceList[keyIndex][:-3]} is full")
+
+            outfile = open("LICENCE-KEYS.txt", "w")
+            for licence in licenceList:
+                outfile.write(licence)
+                outfile.write('\n')
+            outfile.close()
+
         elif choice == '3':
             print("Exit Program")
             break
@@ -59,7 +73,8 @@ def menu():
         else:
             print("Invalid option selected. Try again")
             continue
-        
+    
+menu()
 
 class Licence:
     def __init__(self, key='', licenceType='', date='', name=''):
@@ -139,7 +154,7 @@ class ThreeUser(Licence):
     def getNumberOfUser(self):
         return self.__numberOfUser
 
-    def display(): #to show polymorphism
+    def display(self): #to show polymorphism
         pass
     
             

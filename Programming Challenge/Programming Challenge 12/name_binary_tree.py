@@ -96,7 +96,7 @@ def main():
     tree.add("Cid")
     tree.add("Ali")
     print(tree)
-    tree.inOrderTraversal(2)
+    tree.inOrderTraversal(1)
 
 
 main()
