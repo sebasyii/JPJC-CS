@@ -1,19 +1,18 @@
 # Read the equation file
 
-infile = open("equations.txt","r")
+infile = open("equations.txt", "r")
 
 equation = infile.readline()[:-1]
-alphabet = [chr(i) for i in range(97,123)]
-
+alphabet = [chr(i) for i in range(97, 123)]
 
 
 def get_terms(eqn):
     term = eqn[0]
     terms = []
-    
+
     for char in eqn[1:]:
         # If it is a alphabet
-        if char in ('+', '-'):
+        if char in ("+", "-"):
             terms.append(term)
             term = char
         else:
@@ -22,12 +21,12 @@ def get_terms(eqn):
     return terms
 
 
-#Split it into left and right
+# Split it into left and right
 LHS, RHS = equation.split("=")
 LHS_terms = get_terms(LHS)
 RHS_terms = get_terms(RHS)
 
-variable = ''
+variable = ""
 for i in equation:
     if i in alphabet:
         variable = i
@@ -35,7 +34,7 @@ for i in equation:
 coeff_sum = 0
 const_sum = 0
 
-#Move all the variable to the right and all the constant to the left
+# Move all the variable to the right and all the constant to the left
 
 for lhs_char in LHS_terms:
     if variable in lhs_char:
@@ -51,5 +50,4 @@ for rhs_char in RHS_terms:
     else:
         const_sum += int(rhs_char)
 
-print(const_sum/coeff_sum)
-        
+print(const_sum / coeff_sum)

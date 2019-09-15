@@ -1,10 +1,10 @@
 class Hashtable:
-    def __init__(self, Max = 20):
+    def __init__(self, Max=20):
         self.__size = Max
         self.__data = [None] * self.__size
 
     def display(self):
-        print("{0:^20} | {1:<20}".format("Address","ID"))
+        print("{0:^20} | {1:<20}".format("Address", "ID"))
         for element in range(self.__size):
             print("{0:^20} | {1:<20}".format(element, str(self.__data[element])))
 
@@ -12,14 +12,14 @@ class Hashtable:
     def hashfunction(self, keydata):
         total = int(0)
         for char in keydata:
-            print("keydata: {0} , char: {1}".format(keydata,char))
+            print("keydata: {0} , char: {1}".format(keydata, char))
             total += ord(char)
             print("Total: {0}".format(total))
         return total % self.__size
 
     # Convert old hash to new hash
     def rehash(self, oldhash):
-        return (oldhash+1)%self.__size
+        return (oldhash + 1) % self.__size
 
     # Insert data
     def insert(self, data):
@@ -42,10 +42,10 @@ class Hashtable:
             self.__data[nextslot] = data
 
     def search(self, data):
-        hashcode = self.hashfunction(data) #get the hashcode from the hashfunction
-        if self.__data[hashcode] == data: #data is found, return index
+        hashcode = self.hashfunction(data)  # get the hashcode from the hashfunction
+        if self.__data[hashcode] == data:  # data is found, return index
             return self.hashfunction(data)
-        else: # data not found at hashcode location
+        else:  # data not found at hashcode location
             nextslot = self.rehash(hashcode)
             while self.__data[nextslot] != data:
                 nextslot = self.rehash(nextslot)
@@ -53,6 +53,7 @@ class Hashtable:
                     print(data, "not found in hash table")
                     return
             return self.hashfunction(data)
+
 
 id_file = open("KEYS2.txt", "r")
 
@@ -67,6 +68,3 @@ id_file.close()
 
 id_number = input("Enter an ID Number: ")
 print(h1.search(id_number))
-
-
-

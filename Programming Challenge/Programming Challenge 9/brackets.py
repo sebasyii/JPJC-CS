@@ -3,7 +3,7 @@ class Stack:
         self.__data = []
 
     def __str__(self):
-        output = ''
+        output = ""
         for i in range(len(self.__data)):
             output = output + "\n" + "|{0:^10}|".format(self.__data[i])
         return output
@@ -25,9 +25,7 @@ class Stack:
 
 
 def infixToPostFix(infixExpression):
-    precedence = {"*": 3, "/": 3,
-                  "+": 2, "-": 2,
-                  "(": 1}
+    precedence = {"*": 3, "/": 3, "+": 2, "-": 2, "(": 1}
     opStack = Stack()
     postfixList = []
     tokenList = infixExpression.split()
@@ -39,7 +37,9 @@ def infixToPostFix(infixExpression):
         elif token == "(":
             opStack.Push(token)
         elif token == "+" or token == "*" or token == "/":
-            while (opStack.Peek() in "+-*/") and (precedence[opStack.Peek()] >= precedence[token]):
+            while (opStack.Peek() in "+-*/") and (
+                precedence[opStack.Peek()] >= precedence[token]
+            ):
                 postfixList.append(opStack.Pop())
             opStack.Push(token)
         elif token == ")":

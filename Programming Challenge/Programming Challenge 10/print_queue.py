@@ -38,8 +38,9 @@ class PrintQueue:
         self.__front = 0
         self.__rear = 0
         self.__max_size = max_size
-        self.__print_queue = [PrintJob(None, None, None)
-                              for i in range(self.__max_size)]
+        self.__print_queue = [
+            PrintJob(None, None, None) for i in range(self.__max_size)
+        ]
 
     def size(self):
         if self.__rear >= self.__front:
@@ -50,15 +51,15 @@ class PrintQueue:
         return qSize
 
     def add_print_job(self, print_job):
-        if self.size() == self.__max_size-1:
-            return ("Queue is Full!")
+        if self.size() == self.__max_size - 1:
+            return "Queue is Full!"
         self.__print_queue[self.__rear] = print_job
         self.__rear = (self.__rear + 1) % self.__max_size
         return True
 
     def output_print_job(self):
         if self.size() == 0:
-            return ("Print Queue is empty!")
+            return "Print Queue is empty!"
         else:
             print_job = self.__print_queue[self.__front]
             self.__front = (self.__front + 1) % self.__max_size
@@ -69,12 +70,20 @@ class PrintQueue:
             print("Queue is empty!", end="\n\n")
             return False
         else:
-            print("                  |{0:^25}|{1:^20}|{2:^20}|".format(
-                "USER ID", "TERMINAL NUMBER", "FILE SIZE"))
+            print(
+                "                  |{0:^25}|{1:^20}|{2:^20}|".format(
+                    "USER ID", "TERMINAL NUMBER", "FILE SIZE"
+                )
+            )
 
             print("")
-            print("Current queue is: |{0:^25}|{1:^20}|{2:^20}|".format(str(self.__print_queue[self.__front].get_user_id()), str(
-                self.__print_queue[self.__front].get_terminal_number()), str(self.__print_queue[self.__front].get_file_size())))
+            print(
+                "Current queue is: |{0:^25}|{1:^20}|{2:^20}|".format(
+                    str(self.__print_queue[self.__front].get_user_id()),
+                    str(self.__print_queue[self.__front].get_terminal_number()),
+                    str(self.__print_queue[self.__front].get_file_size()),
+                )
+            )
             print()
 
 
@@ -94,15 +103,17 @@ def main():
 
         if user_choice == "1":
             while True:
-                print("----------Add a print queue----------", end='\n\n')
+                print("----------Add a print queue----------", end="\n\n")
                 user_id_choice = input("Enter your user ID: ")
-                terminal_number_choice = input(
-                    "Enter your terminal number(1-172): ")
+                terminal_number_choice = input("Enter your terminal number(1-172): ")
                 file_size_choice = input("Enter your file size: ")
                 print()
                 if ValidateUserID(user_id_choice) == 0:
                     Room16.add_print_job(
-                        PrintJob(user_id_choice, terminal_number_choice, file_size_choice))
+                        PrintJob(
+                            user_id_choice, terminal_number_choice, file_size_choice
+                        )
+                    )
                     print("*-----Print Job added-----*", end="\n\n\n")
                     break
                 else:
@@ -110,8 +121,11 @@ def main():
                     continue
         elif user_choice == "2":
             print()
-            print("You have removed the print job from the print queue: {0}".format(
-                Room16.output_print_job()))
+            print(
+                "You have removed the print job from the print queue: {0}".format(
+                    Room16.output_print_job()
+                )
+            )
             print()
 
         elif user_choice == "3":

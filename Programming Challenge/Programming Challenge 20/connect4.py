@@ -1,23 +1,22 @@
-
 def InitialiseBoard():
-    Board = [['-' for col in range(7)] for row in range(6)]
+    Board = [["-" for col in range(7)] for row in range(6)]
     return Board
 
 
 def SetUpGame():
     GameFinished = False
-    ThisPlayer = 'O'
+    ThisPlayer = "O"
     return GameFinished, ThisPlayer
 
 
 def OutputBoard(Board):
     count = 1
-    print('   1  2  3  4  5  6  7')
+    print("   1  2  3  4  5  6  7")
     for row in Board:
-        print(count, end=' ')
+        print(count, end=" ")
         count += 1
         for col in row:
-            print(f"{col:^3}", end='')
+            print(f"{col:^3}", end="")
         print()
 
 
@@ -29,32 +28,42 @@ def ThisPlayerMakesMove(Board, ThisPlayer):
         player_input = input("Enter a valid column number(1-7): ")
 
     for row in range(len(Board), 0, -1):
-        if Board[row-1][int(player_input)-1] == '-':
-            Board[row-1][int(player_input)-1] = ThisPlayer
+        if Board[row - 1][int(player_input) - 1] == "-":
+            Board[row - 1][int(player_input) - 1] = ThisPlayer
             break
-        if Board[0][int(player_input)-1] != '-':
+        if Board[0][int(player_input) - 1] != "-":
             print("Column is full")
             break
 
 
 def CheckIfThisPlayerHasWon(Board, ThisPlayer):
     for row in range(len(Board)):
-        for col in range(len(Board[0])-3):
-            if Board[row][col] == ThisPlayer and Board[row][col+1] == ThisPlayer and Board[row][col+2] == ThisPlayer and Board[row][col+3] == ThisPlayer:
+        for col in range(len(Board[0]) - 3):
+            if (
+                Board[row][col] == ThisPlayer
+                and Board[row][col + 1] == ThisPlayer
+                and Board[row][col + 2] == ThisPlayer
+                and Board[row][col + 3] == ThisPlayer
+            ):
                 return True
 
-    for row in range(len(Board)-3):
+    for row in range(len(Board) - 3):
         for col in range(len(Board[0])):
-            if Board[row][col] == ThisPlayer and Board[row+1][col] == ThisPlayer and Board[row+2][col] == ThisPlayer and Board[row+3][col] == ThisPlayer:
+            if (
+                Board[row][col] == ThisPlayer
+                and Board[row + 1][col] == ThisPlayer
+                and Board[row + 2][col] == ThisPlayer
+                and Board[row + 3][col] == ThisPlayer
+            ):
                 return True
     return False
 
 
 def SwapThisPlayer(ThisPlayer):
-    if ThisPlayer == 'O':
-        ThisPlayer = 'X'
+    if ThisPlayer == "O":
+        ThisPlayer = "X"
     else:
-        ThisPlayer = 'O'
+        ThisPlayer = "O"
     return ThisPlayer
 
 
@@ -74,4 +83,3 @@ def main():
 
 
 main()
-

@@ -11,7 +11,7 @@ def luhn_verify(id_number):
     counter = 1
     for each in left_digit[::-1]:
         if counter % 2 != 0:
-            each = int(each)*2
+            each = int(each) * 2
             each_arr = [int(i) for i in str(each)]
             for num in each_arr:
                 num_arr.append(num)
@@ -37,7 +37,7 @@ def gen_valid_id(number):
         counter = 1
         for each in number[::-1]:
             if counter % 2 != 0:
-                each = int(each)*2
+                each = int(each) * 2
                 each_arr = [int(i) for i in str(each)]
                 for num in each_arr:
                     num_arr.append(num)
@@ -51,7 +51,7 @@ def gen_valid_id(number):
 
         check_digit = 10 - (total % 10)
         print("Your check digit is ", check_digit)
-        print("Your number is ", str(number)+str(check_digit))
+        print("Your number is ", str(number) + str(check_digit))
 
     elif len(number) <= 3:
         print("Please enter a number of minimum 3 digits")

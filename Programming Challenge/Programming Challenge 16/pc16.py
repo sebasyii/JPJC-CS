@@ -1,5 +1,5 @@
 class ConnectionNode:
-    def __init__(self, DataValue='', LeftChild=0, RightChild=0):
+    def __init__(self, DataValue="", LeftChild=0, RightChild=0):
         self.__DataValue = str(DataValue)
         self.__LeftChild = int(LeftChild)
         self.__RightChild = int(RightChild)
@@ -22,21 +22,23 @@ class ConnectionNode:
     def setRightChild(self, NewRightChild):
         self.__RightChild = int(NewRightChild)
 
+
 class Robot:
     def __init__(self):
         self.__RobotData = [None] + [ConnectionNode() for i in range(25)]
         for i in range(1, 25):
-            self.__RobotData[i].setLeftChild(i+1)
+            self.__RobotData[i].setLeftChild(i + 1)
         self.__Root = 1
         self.__NextFreeChild = 1
 
     def display(self):
-        print(f'Root is {self.__Root}')
-        print(f'NextFreeChild is {self.__NextFreeChild}')
+        print(f"Root is {self.__Root}")
+        print(f"NextFreeChild is {self.__NextFreeChild}")
         print(f'{"Data":^10} | {"LeftChild":^10} | {"RightChild":^10}')
-        for data in range(1,len(self.__RobotData)):
-            print(f'{self.__RobotData[data].getDataValue():^10} | {self.__RobotData[data].getLeftChild():^10} | {self.__RobotData[data].getRightChild():^10}')
-
+        for data in range(1, len(self.__RobotData)):
+            print(
+                f"{self.__RobotData[data].getDataValue():^10} | {self.__RobotData[data].getLeftChild():^10} | {self.__RobotData[data].getRightChild():^10}"
+            )
 
     def FindNode(self, NodeValue):
         Found = False
@@ -50,7 +52,7 @@ class Robot:
             return 0
         else:
             return CurrentPosition
-        
+
     def AddToRobotData(self, NewDataItem, ParentItem, ThisMove):
         if self.__Root == 1 and self.__NextFreeChild == 1:
             self.__NextFreeChild = self.__RobotData[self.__NextFreeChild].getLeftChild()
@@ -65,27 +67,34 @@ class Robot:
                     ChildPointer = ExistingChild
                 else:
                     ChildPointer = self.__NextFreeChild
-                    self.__NextFreeChild = self.__RobotData[self.__NextFreeChild].getLeftChild()
+                    self.__NextFreeChild = self.__RobotData[
+                        self.__NextFreeChild
+                    ].getLeftChild()
                     self.__RobotData[ChildPointer].setLeftChild(0)
                     self.__RobotData[ChildPointer].setDataValue(NewDataItem)
-                if ThisMove == 'L':
+                if ThisMove == "L":
                     self.__RobotData[ParentPosition].setLeftChild(ChildPointer)
                 else:
                     self.__RobotData[ParentPosition].setRightChild(ChildPointer)
+
     def PreOrderTraversal(self, index):
         if self.__Root == 1:
-            return 'Empty!'
+            return "Empty!"
         if index != 0:
             print(self.__RobotData[index].getDataValue())
             self.PreOrderTraversal(self.__RobotData[index].getLeftChild())
             self.PreOrderTraversal(self.__RobotData[index].getRightChild())
+
+
 def main():
     robot = Robot()
-    infile = open('SEARCHTREE.txt', 'r')
+    infile = open("SEARCHTREE.txt", "r")
     for line in infile:
-        data, parent, move = line[:-1].split(',')
+        data, parent, move = line[:-1].split(",")
         robot.AddToRobotData(data, parent, move)
     infile.close()
     robot.display()
     robot.PreOrderTraversal(1)
+
+
 main()

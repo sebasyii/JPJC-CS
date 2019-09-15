@@ -20,7 +20,7 @@ class Linkedlist:
     def __init__(self, limit):
         self.__Node = [None] + [ListNode() for i in range(limit)]
         for index in range(1, limit):
-            self.__Node[index].SetPointerValue(index+1)
+            self.__Node[index].SetPointerValue(index + 1)
         self.__Start = 0  # Initial is 0
         self.__NextFree = 1
 
@@ -33,10 +33,11 @@ class Linkedlist:
 
         # Header
         print("{0:^10}|{1:^20}|{2:^10}".format("index", "Data", "Pointer"))
-        print("-"*42)
+        print("-" * 42)
         for i in range(1, len(self.__Node)):
             print(
-                f"{i:^10} | {self.__Node[i].GetDataValue():^20} | {self.__Node[i].GetPointerValue():^10}")
+                f"{i:^10} | {self.__Node[i].GetDataValue():^20} | {self.__Node[i].GetPointerValue():^10}"
+            )
 
     def AddNode(self):
         NewItem = input("Enter item to add: ")
@@ -45,6 +46,7 @@ class Linkedlist:
         # If it is empty
         if self.__Start == 0:
             # Change self.__NextFree to next pointer
+            # Get the
             self.__Start = self.__NextFree
             Temp = self.__Node[self.__NextFree].GetPointerValue()
             self.__Node[self.__NextFree].SetPointerValue(0)
@@ -54,7 +56,6 @@ class Linkedlist:
             # Traverse the list - starting at Start to find
             # The position at which to insert the new item
             Temp = self.__Node[self.__NextFree].GetPointerValue()
-
 
             # If the alphabet - input is smaller than than the alphabet in the list
             if NewItem < self.__Node[self.__Start].GetDataValue():
@@ -105,10 +106,12 @@ class Linkedlist:
         previous = None
         current = self.__Start
 
-        while (self.__Node[current].GetDataValue() != Item) and (self.__Node[current].GetPointerValue() != 0):
+        while (self.__Node[current].GetDataValue() != Item) and (
+            self.__Node[current].GetPointerValue() != 0
+        ):
             previous = current
             current = self.__Node[current].GetPointerValue()
-        if (self.__Node[current].GetDataValue() == Item):
+        if self.__Node[current].GetDataValue() == Item:
             if previous == None:
                 temp = self.__Start
                 self.__Start = self.__Node[current].GetPointerValue()
@@ -116,7 +119,8 @@ class Linkedlist:
             else:
                 temp = current
                 self.__Node[previous].SetPointerValue(
-                    self.__Node[current].GetPointerValue())
+                    self.__Node[current].GetPointerValue()
+                )
             self.__Node[temp].SetPointerValue(self.__NextFree)
             self.__NextFree = temp
             self.__Node[temp].SetDataValue("REMOVED")
@@ -127,36 +131,36 @@ class Linkedlist:
 def main():
     fruitsList = Linkedlist(30)
     while True:
-        print('1. Add an item')
-        print('2. Traverse the linked list of used nodes and output the data values')
-        print('3. Output all pointers and data values')
-        print('4. Reverse traversal and display data values')
-        print('5. Remove an item')
-        print('X. Exit')
+        print("1. Add an item")
+        print("2. Traverse the linked list of used nodes and output the data values")
+        print("3. Output all pointers and data values")
+        print("4. Reverse traversal and display data values")
+        print("5. Remove an item")
+        print("X. Exit")
 
-        option = input('Enter option: ')
+        option = input("Enter option: ")
 
-        if option == '1':
+        if option == "1":
             if fruitsList.IsFull():
                 print("It is full")
                 continue
             else:
                 fruitsList.AddNode()
-        elif option == '2':
+        elif option == "2":
             fruitsList.Traversal()
-        elif option == '3':
+        elif option == "3":
             fruitsList.DisplayLinkedList()
-        elif option == '4':
+        elif option == "4":
             fruitsList.ReverseTraversal()
-        elif option == '5':
+        elif option == "5":
             if fruitsList.IsEmpty():
                 print("No data in linked list. Nothing to remove.")
                 continue
             fruitsList.RemoveNode()
-        elif option == 'X':
+        elif option == "X":
             break
         else:
-            print('*** INVALID OPTION *** \nTry again')
+            print("*** INVALID OPTION *** \nTry again")
 
 
 main()

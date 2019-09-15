@@ -20,14 +20,19 @@ def chatterbot(wordList):
         elif ("thank you" in wordList[i].lower()) or ("thanks" in wordList[i].lower()):
             print("Chatterbot: You are most welcome.")
 
-        elif ("missed" in wordList[i].lower()):
+        elif "missed" in wordList[i].lower():
             print("Chatterbot: You missed me? I really missed you too.")
 
-        elif ("I" in wordList[i] and "you" in wordList[i].lower()):
+        elif "I" in wordList[i] and "you" in wordList[i].lower():
             sentence = wordList[i].split()
             if sentence[0] == "I" and ("you" in sentence[2].lower()):
-                print("Chatterbot: You",
-                      sentence[1], "me? I really", sentence[1], "you too.")
+                print(
+                    "Chatterbot: You",
+                    sentence[1],
+                    "me? I really",
+                    sentence[1],
+                    "you too.",
+                )
 
         else:
             print("Chatterbot: Sorry, I do not understand...")

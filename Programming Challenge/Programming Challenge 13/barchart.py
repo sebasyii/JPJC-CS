@@ -28,7 +28,7 @@ def task1():
     print("+" * 40)
     print()
     for i in range(len(xlist)):
-        print("{:2}{:<9}{:<60}".format("", xlist[i], "@"*freqlist[i]))
+        print("{:2}{:<9}{:<60}".format("", xlist[i], "@" * freqlist[i]))
 
 
 def task2():
@@ -49,11 +49,11 @@ def task2():
     print("Frequency distribution")
     print("+" * 40)
     print()
-    num_of_lines = 36//len(xlist)
+    num_of_lines = 36 // len(xlist)
     for i in range(len(xlist)):
-        print("{:2}{:<9}{:<60}".format("", xlist[i], "+"*freqlist[i]))
-        for j in range(num_of_lines-1):
-            print("{:2}{:<9}{:<60}".format("", "", "+"*freqlist[i]))
+        print("{:2}{:<9}{:<60}".format("", xlist[i], "+" * freqlist[i]))
+        for j in range(num_of_lines - 1):
+            print("{:2}{:<9}{:<60}".format("", "", "+" * freqlist[i]))
 
 
 def task3():
@@ -74,7 +74,7 @@ def task3():
     scale_freqlist = list()
     if max_freq > 60:
         for freq in freqlist:
-            scale_freq = (freq/max_freq) * 60
+            scale_freq = (freq / max_freq) * 60
             scale_freqlist.append(int(scale_freq))
     else:
         scale_freqlist = freqlist
@@ -84,25 +84,35 @@ def task3():
     print("Frequency distribution")
     print("+" * 40)
     print()
-    num_of_lines = 36//len(xlist)
+    num_of_lines = 36 // len(xlist)
     for i in range(len(xlist)):
-        print("{:2}{:<9}{:<60}".format("", xlist[i], "\u2588"*scale_freqlist[i]))
-        for j in range(num_of_lines-1):
-            print("{:2}{:<9}{:<60}".format("", "", "\u2588"*scale_freqlist[i]))
+        print("{:2}{:<9}{:<60}".format("", xlist[i], "\u2588" * scale_freqlist[i]))
+        for j in range(num_of_lines - 1):
+            print("{:2}{:<9}{:<60}".format("", "", "\u2588" * scale_freqlist[i]))
 
     print()
-    print("{:^11}{:60}".format("X Values", "-"*60))
+    print("{:^11}{:60}".format("X Values", "-" * 60))
 
     show_value = list()
     if max_freq > 60:
         for i in range(6):
-            value = (max_freq/6) * (i+1)
+            value = (max_freq / 6) * (i + 1)
             show_value.append(round(value, 1))
     else:
         for i in range(1, 7):
-            show_value.append(i*10)
+            show_value.append(i * 10)
 
-    print("{:>11}{:>10}{:>10}{:>10}{:>10}{:>10}{:>10}".format("0", str(show_value[0]), str(show_value[1]), str(show_value[2]), str(show_value[3]), str(show_value[4]), str(show_value[5])))
+    print(
+        "{:>11}{:>10}{:>10}{:>10}{:>10}{:>10}{:>10}".format(
+            "0",
+            str(show_value[0]),
+            str(show_value[1]),
+            str(show_value[2]),
+            str(show_value[3]),
+            str(show_value[4]),
+            str(show_value[5]),
+        )
+    )
 
 
 task3()

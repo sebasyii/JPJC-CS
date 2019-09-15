@@ -1,16 +1,17 @@
 import random
-grid = [['.' for j in range(15)] for i in range(8)]
+
+grid = [["." for j in range(15)] for i in range(8)]
 
 
 def print_grid(grid):
     for row in grid:
         for col in row:
-            print(col, end='')
+            print(col, end="")
         print()
 
 
 def throw_stone(x, y):
-    grid[y][x] = 'S'
+    grid[y][x] = "S"
 
 
 def spawn_fish():
@@ -18,18 +19,18 @@ def spawn_fish():
     while fishes > 0:
         x_coor_fish = random.randint(0, 14)
         y_coor_fish = random.randint(0, 7)
-        if grid[y_coor_fish][x_coor_fish] == 'F':
+        if grid[y_coor_fish][x_coor_fish] == "F":
             continue
         else:
-            grid[y_coor_fish][x_coor_fish] = 'F'
+            grid[y_coor_fish][x_coor_fish] = "F"
             fishes -= 1
 
 
 def throw_pellets(x, y):
-    if not grid[y][x] == 'F':
-        grid[y][x] = 'P'
+    if not grid[y][x] == "F":
+        grid[y][x] = "P"
     else:
-        grid[y][x] = 'H'
+        grid[y][x] = "H"
 
 
 def main():
@@ -40,7 +41,7 @@ def main():
             print("Wrong value sorry. Try again.. ")
             continue
         else:
-            throw_stone(int(x_coor)-1, int(y_coor)-1)
+            throw_stone(int(x_coor) - 1, int(y_coor) - 1)
             print_grid(grid)
             break
     spawn_fish()
@@ -53,7 +54,7 @@ def main():
             continue
         else:
             if index > 0:
-                throw_pellets(int(x_coor)-1, int(y_coor)-1)
+                throw_pellets(int(x_coor) - 1, int(y_coor) - 1)
                 print_grid(grid)
             else:
                 index -= 1

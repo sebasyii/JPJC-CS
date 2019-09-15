@@ -1,5 +1,5 @@
 # Task 1
-'''
+"""
 
 Program design
 
@@ -12,30 +12,28 @@ returns the board as an array
 Procedure OutputBoard
 and prints out the array.
 
-'''
+"""
 # Task 2
 
 
 def InitializeBoard():
-    Board = [[4, 3, 2, 1],
-             [1, 2, 4, 3],
-             [3, 4, 1, 2],
-             [2, 1, 3, 4]]
+    Board = [[4, 3, 2, 1], [1, 2, 4, 3], [3, 4, 1, 2], [2, 1, 3, 4]]
     return Board
 
 
 def OutputBoard(board):
     for row in range(4):
         for col in range(4):
-            print(board[row][col], end='')
+            print(board[row][col], end="")
 
         print()
 
 
 def transform1(board):
     import random
-    row = random.choice(['top', 'bottom'])
-    if row == 'top':
+
+    row = random.choice(["top", "bottom"])
+    if row == "top":
         temp = board[0]
         board[0] = board[1]
         board[1] = temp
@@ -49,8 +47,9 @@ def transform1(board):
 
 def transform2(board):
     import random
-    col = random.choice(['left', 'right'])
-    if col == 'left':
+
+    col = random.choice(["left", "right"])
+    if col == "left":
         for row in range(4):
             temp = board[row][0]
             board[row][0] = board[row][1]
@@ -86,6 +85,7 @@ def transform4(board):
 
 def SelectTransformation():
     import random
+
     choice1 = random.randint(1, 4)
     choice2 = random.randint(1, 4)
     while choice1 == choice2:

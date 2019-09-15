@@ -3,7 +3,7 @@ class Stack:
         self.__items = []
         self.__top = 0
 
-    def Push(self,item):
+    def Push(self, item):
         self.__items.append(item)
         self.__top += 1
 
@@ -13,7 +13,7 @@ class Stack:
         self.__top -= 1
         return self.__items.pop()
 
-    def Peep(self): #inspect the topmost item of the stack
+    def Peep(self):  # inspect the topmost item of the stack
         if self.isEmpty():
             return "stack is empty"
         return self.__items[self.__top - 1]
@@ -22,10 +22,10 @@ class Stack:
         return self.__top == 0
 
 
-def CheckNested(construct): #construct is string
-    leftBrackets = ['(','[','{']
-    rightBrackets = [')',']','}']
-    opStack = Stack() #create a stack
+def CheckNested(construct):  # construct is string
+    leftBrackets = ["(", "[", "{"]
+    rightBrackets = [")", "]", "}"]
+    opStack = Stack()  # create a stack
     for i in range(len(construct)):
         if construct[i] in "({[":
             opStack.Push(construct[i])
@@ -36,7 +36,7 @@ def CheckNested(construct): #construct is string
                     return False
                 else:
                     return False
-            else: #nth on stack
+            else:  # nth on stack
                 return False
 
     if not opStack.isEmpty():
@@ -45,16 +45,15 @@ def CheckNested(construct): #construct is string
     else:
         return True
 
+
 def task3():
-    infile = open("DATA.txt","r")
-    outfile = open("ERRORS.txt","w")
+    infile = open("DATA.txt", "r")
+    outfile = open("ERRORS.txt", "w")
     for line in infile:
         if CheckNested(line[:-1]) is False:
-            print(line[:-1], file = outfile)
+            print(line[:-1], file=outfile)
     outfile.close()
     infile.close()
 
-task3()
 
-    
-    
+task3()
