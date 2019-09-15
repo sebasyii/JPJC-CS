@@ -67,7 +67,7 @@ class BinaryTree:
                     self.__NextFreePosition)
 
         NewNextFreePosition = self.__ThisTree[self.__NextFreePosition].getLeftP(
-        ) #set to next point
+        )  # set to next point
         self.__ThisTree[self.__NextFreePosition].setLeftP(0)
         self.__ThisTree[self.__NextFreePosition].setData(NewTreeItem)
         self.__NextFreePosition = NewNextFreePosition

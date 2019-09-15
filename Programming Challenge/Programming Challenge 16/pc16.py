@@ -77,8 +77,8 @@ class Robot:
             return 'Empty!'
         if index != 0:
             print(self.__RobotData[index].getDataValue())
-            self.__PreOrderTraversal(self.__RobotData[index].getLeftChild())
-            self.__PreOrderTraversal(self.__RobotData[index].getRightChild())
+            self.PreOrderTraversal(self.__RobotData[index].getLeftChild())
+            self.PreOrderTraversal(self.__RobotData[index].getRightChild())
 def main():
     robot = Robot()
     infile = open('SEARCHTREE.txt', 'r')

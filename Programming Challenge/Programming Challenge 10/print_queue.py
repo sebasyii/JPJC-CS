@@ -69,11 +69,11 @@ class PrintQueue:
             print("Queue is empty!", end="\n\n")
             return False
         else:
-            print("             |{0:^20}|{1:^20}|{2:^20}|".format(
+            print("                  |{0:^25}|{1:^20}|{2:^20}|".format(
                 "USER ID", "TERMINAL NUMBER", "FILE SIZE"))
 
             print("")
-            print("Current queue is: |{0:^20}|{1:^20}|{2:^20}|".format(str(self.__print_queue[self.__front].get_user_id()), str(
+            print("Current queue is: |{0:^25}|{1:^20}|{2:^20}|".format(str(self.__print_queue[self.__front].get_user_id()), str(
                 self.__print_queue[self.__front].get_terminal_number()), str(self.__print_queue[self.__front].get_file_size())))
             print()
 
