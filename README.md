@@ -103,3 +103,12 @@ Collection of examples and assignment code written in Python 3 for H2 Computing 
   - Programming Challenge 14
   - Refactor Message Decoder(Programming Challenge 2)
   - Added comments to Fruits Linked List
+
+### [0.7.2] - 15/09/2019
+
+  - Added Solutions to searching and sorting algorithms
+    - Algorithms
+      - Bubble Sort
+      - Insertion Sort
+      - Quick Sort
+      - Binary Search
