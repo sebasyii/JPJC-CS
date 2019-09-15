@@ -76,19 +76,26 @@ def getPlayerMove(board, player):
 def checkWin(board, letter):
     return (
         # Horizontal Top
-        (board[7] == letter and board[8] == letter and board[9] == letter) or
+        (board[7] == letter and board[8] == letter and board[9] == letter)
+        or
         # Horizontal Middle
-        (board[4] == letter and board[5] == letter and board[6] == letter) or
+        (board[4] == letter and board[5] == letter and board[6] == letter)
+        or
         # Horizontal Bottom
-        (board[1] == letter and board[2] == letter and board[3] == letter) or
+        (board[1] == letter and board[2] == letter and board[3] == letter)
+        or
         # Vertical Left
-        (board[7] == letter and board[4] == letter and board[1] == letter) or
+        (board[7] == letter and board[4] == letter and board[1] == letter)
+        or
         # Vertical Middle
-        (board[8] == letter and board[5] == letter and board[2] == letter) or
+        (board[8] == letter and board[5] == letter and board[2] == letter)
+        or
         # Vertical Right
-        (board[9] == letter and board[6] == letter and board[3] == letter) or
+        (board[9] == letter and board[6] == letter and board[3] == letter)
+        or
         # Diagonal
-        (board[7] == letter and board[5] == letter and board[3] == letter) or
+        (board[7] == letter and board[5] == letter and board[3] == letter)
+        or
         # Diagonal
         (board[9] == letter and board[5] == letter and board[1] == letter)
     )
@@ -96,7 +103,7 @@ def checkWin(board, letter):
 
 def isBoardFull(board):
     for i in range(1, 10):
-        if board[i] == ' ':
+        if board[i] == " ":
             return False
     return True
 
@@ -116,12 +123,12 @@ def main():
         if turn == 1:
             print("Player 1's turn")
             displayBoard(board)
-            move = getPlayerMove(board, 'player 1')
-            board[move] = 'X'
+            move = getPlayerMove(board, "player 1")
+            board[move] = "X"
 
-            if checkWin(board, 'X'):
+            if checkWin(board, "X"):
                 displayBoard(board)
-                print('Player 1 won!')
+                print("Player 1 won!")
                 gameIsPlaying = False
             else:
                 if isBoardFull(board):
@@ -133,12 +140,12 @@ def main():
         else:
             print("Player 2's turn")
             displayBoard(board)
-            move = getPlayerMove(board, 'player 2')
-            board[move] = 'O'
+            move = getPlayerMove(board, "player 2")
+            board[move] = "O"
 
-            if checkWin(board, 'O'):
+            if checkWin(board, "O"):
                 displayBoard(board)
-                print('Player 2 won!')
+                print("Player 2 won!")
                 gameIsPlaying = False
             else:
                 if isBoardFull(board):
