@@ -12,7 +12,7 @@ class Stack:
         return len(self.__data) == 0
 
     def Push(self, data):
-        self.__data.insert(0, data)
+        self.__data.append(data)
 
     def Pop(self):
         return self.__data.pop(0)

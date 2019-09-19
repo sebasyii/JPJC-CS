@@ -52,13 +52,15 @@ class PrintQueue:
 
     def add_print_job(self, print_job):
         if self.size() == self.__max_size - 1:
-            return "Queue is Full!"
+            print("Queue is Full!")
+            return False
         self.__print_queue[self.__rear] = print_job
         self.__rear = (self.__rear + 1) % self.__max_size
         return True
 
     def output_print_job(self):
         if self.size() == 0:
+            
             return "Print Queue is empty!"
         else:
             print_job = self.__print_queue[self.__front]
@@ -66,7 +68,7 @@ class PrintQueue:
             return print_job
 
     def display_print_job(self):
-        if self.size() == self.__max_size:
+        if self.size() == 0:
             print("Queue is empty!", end="\n\n")
             return False
         else:

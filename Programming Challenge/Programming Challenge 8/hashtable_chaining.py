@@ -23,9 +23,11 @@ class BookRec:
         self.__Pointer = Pointer
 
 
-class Linkedlist:
+class LinkedList:
     def __init__(self):
         self.__Start = None
+        self.__ArrayOfNodes = []
+        self.__nextfree = 0
 
     def __str__(self):
         output = ""
@@ -52,9 +54,9 @@ class Linkedlist:
             newNode.setPointer(temp)
 
     def DeleteNode(self, BookID):
-        if not self.IsEmpty():  # Linkedlist is empty
+        if not self.isEmpty():  # Linkedlist is empty
             previous = None
-            current = self.__start
+            current = self.__Start
             while current.getBookID() != BookID and current.getPointer() is not None:
                 previous = current
                 current = current.getPointer()
@@ -86,9 +88,9 @@ class Linkedlist:
             print(
                 "|{:^10}|{:^15}|{:^35}|{:^15}|".format(
                     i,
-                    self._ArrayOfNodes[i].getBookID(),
-                    self.ArrayOfNodes[i].getTitle(),
-                    self._ArrayOfNodes[i].getPointer(),
+                    self.__ArrayOfNodes[i].getBookID(),
+                    self.__ArrayOfNodes[i].getTitle(),
+                    self.__ArrayOfNodes[i].getPointer(),
                 )
             )
         print("\n")
@@ -108,27 +110,27 @@ class HashTable:
             array.append(each)
         for i in range(len(array)):
             total = total + ord(array[i])
-        ASCII = total % self.__size + 1
+        ASCII = total % self.__Size + 1
         return ASCII
 
     def Display(self):
         print("  |{:^10}|{:^25}|".format("BookID", "Title"))
         print(" ", "_" * 37)
-        for i in range(self.__size):
-            self.__Book[i].DisplayLinkedList()
+        for i in range(self.__Size):
+            self.__Slots[i].DisplayLinkedList()
             print(" ", "_" * 37)
 
     def Put(self, BookID, Title):
         ASCII = self.Hash(BookID)
-        self.__Book[ASCII].AddNode(BookID, Title)
+        self.__Slots[ASCII].AddNode(BookID, Title)
 
     def Remove(self, BookID):
         ASCII = self.Hash(BookID)
-        self.__Book[ASCII].DeleteNode(BookID)
+        self.__Slots[ASCII].DeleteNode(BookID)
 
     def Search(self, BookID):
         ASCII = self.Hash(BookID)
-        self.__Book[ASCII].SearchNode(BookID)
+        self.__Slots[ASCII].SearchNode(BookID)
 
 
 l = HashTable(17)
