@@ -106,9 +106,30 @@ Collection of examples and assignment code written in Python 3 for H2 Computing 
 
 ### [0.7.2] - 15/09/2019
 
-  - Added Solutions to searching and sorting algorithms
-    - Algorithms
-      - Bubble Sort
-      - Insertion Sort
-      - Quick Sort
-      - Binary Search
+- Added Solutions to searching and sorting algorithms
+  - Algorithms
+    - Bubble Sort
+    - Insertion Sort
+    - Quick Sort
+    - Binary Search
+
+### [0.8] - 01/10/2019
+
+- Added Solutions to A levels Questions
+  - 2018
+    - Task 1
+    - Task 2
+  - JC2 Prelims 2019
+    - Task 1
+    - Task 2
+    - Task 3
+    - Task 4
+- Changed Solutions to Programming Challenges
+  - Fruits Linked list
+  - Hex to Denary
+  - Hashtable Chaining
+  - New Name Binary Tree
+- Schools Prelim Papers
+  - Nanyang Junior College
+    - Task 1
+    - Task 2

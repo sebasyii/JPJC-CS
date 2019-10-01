@@ -80,7 +80,7 @@ class Tree:
         return output
 
     def inOrderTraversal(self, index):
-        #If its empty
+        # If its empty
         if self.__root == -1:
             return "Binary Tree is empty!"
 

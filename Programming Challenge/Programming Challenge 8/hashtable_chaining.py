@@ -1,7 +1,7 @@
 class BookRec:
-    def __init__(self, ID=None, title=None):
-        self.__BookID = str(ID)
-        self.__Title = str(title)
+    def __init__(self, BookID="", Title=""):
+        self.__BookID = str(BookID)
+        self.__Title = str(Title)
         self.__Pointer = None
 
     def getBookID(self):
@@ -26,120 +26,115 @@ class BookRec:
 class LinkedList:
     def __init__(self):
         self.__Start = None
-        self.__ArrayOfNodes = []
-        self.__nextfree = 0
+
+    def getStart(self):
+        return self.__Start
+
+    def IsEmpty(self):
+        return self.__Start == None
 
     def __str__(self):
         output = ""
         temp = self.__Start
-        i = 1
         while temp is not None:
-            output += "{0}{1}{2}".format(i, temp.getBookID(), temp.getTitle())
+            output += f"{temp.getBookID():<10}{temp.getTitle():<30}"
             temp = temp.getPointer()
-            i += 1
-        output += " None"
+
         return output
 
-    def isEmpty(self):
-        return self.__Start is None
-
-    def AddNode(self, id, title):
-        newNode = BookRec(id, title)
-        if self.isEmpty():
-            self.__Start = newNode
-
+    def AddNode(self, BookID, Title):
+        if self.IsEmpty():
+            self.__Start = BookRec(BookID, Title)
         else:
             temp = self.__Start
-            self.__Start = newNode
-            newNode.setPointer(temp)
+            self.__Start = BookRec(BookID, Title)
+            self.__Start.setPointer(temp)
 
     def DeleteNode(self, BookID):
-        if not self.isEmpty():  # Linkedlist is empty
-            previous = None
-            current = self.__Start
-            while current.getBookID() != BookID and current.getPointer() is not None:
-                previous = current
-                current = current.getPointer()
-            if previous is None:  # firstnode to be removed
-                self.__start = current.getPointer()
-            elif current.getBookID() == BookID:
-                previous.setPointer(current.getPointer())
-            else:  # data doesnt exist within the table
-                print(BookID, "not found. Nothing to remove")
-        else:  # empty linked list
-            print("No nodes in the the linked list. Nothing to remove.")
+        if self.IsEmpty():
+            print("List Empty")
+            return False
+        else:
+            prev = None
+            curr = self.__Start
+            while BookID != curr.getBookID() and curr is not None:
+                prev = curr
+                curr = curr.getPointer()
+            # If first element
+            if prev is None:
+                if BookID == curr.getBookID():
+                    self.__Start = curr.getPointer()
+                else:
+                    print("BookID is not found. Can't be deleted")
+                    return False
+
+            elif BookID == curr.getBookID():
+                prev.setPointer(curr.getPointer())
+                print("BookID deleted.")
+                return True
+            else:
+                print("Cannot find. Can' delete.")
+                return False
 
     def SearchNode(self, BookID):
-        temp = self.__start
-        while temp is not None:
-            if temp.getBookID() == BookID:
+        curr = self.__Start
+        while curr is not None:
+            if curr.getBookID() == BookID:
                 return True
-            temp = temp.getPointer()
+            curr = curr.getPointer()
         return False
-
-    def DisplayLinkedList(self):
-        print(
-            "|{:^10}|{:^15}|{:^35}|{:^15}|".format(
-                "Index", "BookID", "Title", "Pointer"
-            )
-        )
-        print("-" * 80)
-        for i in range(len(self.__ArrayOfNodes)):
-            print(
-                "|{:^10}|{:^15}|{:^35}|{:^15}|".format(
-                    i,
-                    self.__ArrayOfNodes[i].getBookID(),
-                    self.__ArrayOfNodes[i].getTitle(),
-                    self.__ArrayOfNodes[i].getPointer(),
-                )
-            )
-        print("\n")
-        print("Start = ", self.__start)
-        print("NextFree = ", self.__nextfree)
 
 
 class HashTable:
-    def _init_(self, size):
-        self.__Size = size
-        self.__Slots = [LinkedList() for i in range(size)]
+    def __init__(self, Size):
+        self.__Size = Size
+        self.__Slots = [LinkedList() for i in range(self.__Size)]
 
     def Hash(self, BookID):
-        array = []
-        total = 0
-        for each in BookID:
-            array.append(each)
-        for i in range(len(array)):
-            total = total + ord(array[i])
-        ASCII = total % self.__Size + 1
-        return ASCII
+        char_total = 0
+        for char in BookID:
+            char_total += ord(char)
+        address = char_total % self.__Size + 1
+        return address
 
     def Display(self):
-        print("  |{:^10}|{:^25}|".format("BookID", "Title"))
-        print(" ", "_" * 37)
-        for i in range(self.__Size):
-            self.__Slots[i].DisplayLinkedList()
-            print(" ", "_" * 37)
+        print(f'\n{"BookID":<10}{"Title":<30}')
+        for Slot in self.__Slots:
+            print(f"{Slot}")
 
-    def Put(self, BookID, Title):
-        ASCII = self.Hash(BookID)
-        self.__Slots[ASCII].AddNode(BookID, Title)
+    def Put(self, BookID, Rec):
+        address = self.Hash(BookID)
+        self.__Slots[address].AddNode(BookID, Rec)
 
     def Remove(self, BookID):
-        ASCII = self.Hash(BookID)
-        self.__Slots[ASCII].DeleteNode(BookID)
+        address = self.Hash(BookID)
+        if self.__Slots[address].SearchNode(BookID) == True:
+            self.__Slots[address].DeleteNode(BookID)
+        else:
+            print("BookID is not found.")
+            return False
 
     def Search(self, BookID):
-        ASCII = self.Hash(BookID)
-        self.__Slots[ASCII].SearchNode(BookID)
+        address = self.Hash(BookID)
+        if self.__Slots[address].SearchNode(BookID) == False:
+            print("BookID not found")
+            return False
+        else:
+            print("Found")
+            return True
 
 
-l = HashTable(17)
-l.Put("CS733", "Basic algorithms")
-l.Put("AB944", "Master Computing")
-l.Put("KS293", "Data structures")
-l.Put("BK232", "Programming exercises")
-l.Put("PK199", "Testing Python")
-l.Display()
-l.Remove("AB944")
-l.Search("KS293")
-l.Display()
+def main():
+    records = HashTable(17)
+    records.Put("CS733", "Basic algorithms")
+    records.Put("AB944", "Master Computing")
+    records.Put("KS293", "Data structures")
+    records.Put("BK232", "Programming exercises")
+    records.Put("PK199", "Testing Python")
+    records.Display()
+    records.Remove("AB944")
+    records.Display()
+    records.Search("KS293")
+
+
+main()

@@ -1,166 +1,155 @@
+def menu():
+    print("\n" + "-" * 76)
+    print("1. Add an item" + " " * (76 - 15) + "|")
+    print(
+        "2. Traverse the linked list of used nodes and output the data values"
+        + " " * 7
+        + "|"
+    )
+    print("3. Output all pointers and data values" + " " * 37 + "|")
+    print(
+        "4. Traverse the linked list of used nodes and out the data values reversely"
+        + "|"
+    )
+    print("X. Exit" + " " * 68 + "|")
+    print("-" * 76 + "\n")
+
+
 class ListNode:
     def __init__(self, DataValue="", PointerValue=0):
-        self.__DataValue = DataValue  # String
-        self.__PointerValue = PointerValue  # Integer
+        self.__DataValue = str(DataValue)
+        self.__PointerValue = int(PointerValue)
 
-    def GetDataValue(self):
+    def getDataValue(self):
         return self.__DataValue
 
-    def GetPointerValue(self):
+    def getPointerValue(self):
         return self.__PointerValue
 
-    def SetDataValue(self, newData):
-        self.__DataValue = newData
+    def setDataValue(self, DataValue):
+        self.__DataValue = DataValue
 
-    def SetPointerValue(self, newPointer):
-        self.__PointerValue = newPointer
+    def setPointerValue(self, PointerValue):
+        self.__PointerValue = PointerValue
 
 
-class Linkedlist:
-    def __init__(self, limit):
-        self.__Node = [None] + [ListNode() for i in range(limit)]
-        for index in range(1, limit):
-            self.__Node[index].SetPointerValue(index + 1)
-        self.__Start = 0  # Initial is 0
+class LinkedList:
+    def __init__(self):  # Initialise Method
+        self.__Node = [None] + [ListNode() for i in range(30)]
+        self.__Start = 0
         self.__NextFree = 1
+        for i in range(1, len(self.__Node) - 1):
+            self.__Node[i].setPointerValue(i + 1)
 
     def IsEmpty(self):
         return self.__Start == 0
 
-    def DisplayLinkedList(self):
-        print("START =", self.__Start)
-        print("NEXTFREE =", self.__NextFree)
+    def IsFull(self):
+        return self.__NextFree == 0
 
-        # Header
-        print("{0:^10}|{1:^20}|{2:^10}".format("index", "Data", "Pointer"))
-        print("-" * 42)
+    def OutputLinkedList(self):
+        print(f"NextFree: {self.__NextFree}")
+        print(f"Start: {self.__Start}\n")
+        print(f'{"Data Value":^15} {"Pointer Value":^10}')
         for i in range(1, len(self.__Node)):
             print(
-                f"{i:^10} | {self.__Node[i].GetDataValue():^20} | {self.__Node[i].GetPointerValue():^10}"
+                f"{self.__Node[i].getDataValue():^15} {self.__Node[i].getPointerValue():^10}"
             )
 
     def AddNode(self):
-        NewItem = input("Enter item to add: ")
-        self.__Node[self.__NextFree].SetDataValue(NewItem)
+        NewItem = input("Enter your Data: ")
+        self.__Node[self.__NextFree].setDataValue(NewItem)
 
-        # If it is empty
+        # Empty
         if self.__Start == 0:
-            # Change self.__NextFree to next pointer
-            # Get the
             self.__Start = self.__NextFree
-            Temp = self.__Node[self.__NextFree].GetPointerValue()
-            self.__Node[self.__NextFree].SetPointerValue(0)
+            Temp = self.__Node[self.__NextFree].getPointerValue()
+            self.__Node[self.__NextFree].setPointerValue(0)
             self.__NextFree = Temp
-
         else:
-            # Traverse the list - starting at Start to find
-            # The position at which to insert the new item
-            Temp = self.__Node[self.__NextFree].GetPointerValue()
+            # Find Position to insert
 
-            # If the alphabet - input is smaller than than the alphabet in the list
-            if NewItem < self.__Node[self.__Start].GetDataValue():
-                self.__Node[self.__NextFree].SetPointerValue(self.__Start)
+            Temp = self.__Node[self.__NextFree].getPointerValue()
+
+            if NewItem < self.__Node[self.__Start].getDataValue():
+
+                self.__Node[self.__NextFree].setPointerValue(self.__Start)
                 self.__Start = self.__NextFree
                 self.__NextFree = Temp
+
             else:
-                previous = 0
-                current = self.__Start
-                found = False
+                Previous = 0
+                Current = self.__Start
+                Found = False
 
-                while not found and current != 0:
-                    if NewItem <= self.__Node[current].GetDataValue():
-                        self.__Node[previous].SetPointerValue(self.__NextFree)
-                        self.__Node[self.__NextFree].SetPointerValue(current)
+                while not Found and Current != 0:
+                    if NewItem <= self.__Node[Current].getDataValue():
+                        self.__Node[Previous].setPointerValue(self.__NextFree)
+                        self.__Node[self.__NextFree].setPointerValue(Current)
                         self.__NextFree = Temp
-                        found = True
+                        Found = True
+
                     else:
-                        previous = current
-                        current = self.__Node[current].GetPointerValue()
+                        Previous = Current
+                        Current = self.__Node[Current].getPointerValue()
 
-                if current == 0:
-                    self.__Node[previous].SetPointerValue(self.__NextFree)
-                    self.__Node[self.__NextFree].SetPointerValue(0)
+                if Current == 0:
+                    self.__Node[Previous].setPointerValue(self.__NextFree)
+                    self.__Node[self.__NextFree].setPointerValue(Current)
                     self.__NextFree = Temp
-
-    def IsFull(self):
-        return self.__NextFree == -1
-
-    def TraversalInOrder(self, Index):
-        if Index != 0:
-            print(self.__Node[Index].GetDataValue())
-            self.TraversalInOrder(self.__Node[Index].GetPointerValue())
 
     def Traversal(self):
         self.TraversalInOrder(self.__Start)
 
-    def TraversalInReverseOrder(self, Index):
+    def TraversalInOrder(self, Index):
         if Index != 0:
-            self.TraversalInReverseOrder(self.__Node[Index].GetPointerValue())
-            print(self.__Node[Index].GetDataValue())
+            print(self.__Node[Index].getDataValue())
+            self.TraversalInOrder(self.__Node[Index].getPointerValue())
 
     def ReverseTraversal(self):
         self.TraversalInReverseOrder(self.__Start)
 
-    def RemoveNode(self):
-        Item = input("Enter item to remove: ")
-        previous = None
-        current = self.__Start
-
-        while (self.__Node[current].GetDataValue() != Item) and (
-            self.__Node[current].GetPointerValue() != 0
-        ):
-            previous = current
-            current = self.__Node[current].GetPointerValue()
-        if self.__Node[current].GetDataValue() == Item:
-            if previous == None:
-                temp = self.__Start
-                self.__Start = self.__Node[current].GetPointerValue()
-
-            else:
-                temp = current
-                self.__Node[previous].SetPointerValue(
-                    self.__Node[current].GetPointerValue()
-                )
-            self.__Node[temp].SetPointerValue(self.__NextFree)
-            self.__NextFree = temp
-            self.__Node[temp].SetDataValue("REMOVED")
-        else:
-            print("ITEM NOT FOUND")
+    def TraversalInReverseOrder(self, Index):
+        if Index != 0:
+            self.TraversalInOrder(self.__Node[Index].getPointerValue())
+            print(self.__Node[Index].getDataValue())
 
 
 def main():
-    fruitsList = Linkedlist(30)
-    while True:
-        print("1. Add an item")
-        print("2. Traverse the linked list of used nodes and output the data values")
-        print("3. Output all pointers and data values")
-        print("4. Reverse traversal and display data values")
-        print("5. Remove an item")
-        print("X. Exit")
+    fruits_linked_list = LinkedList()
+    loop = True
+    while loop:
+        menu()
 
-        option = input("Enter option: ")
-
-        if option == "1":
-            if fruitsList.IsFull():
-                print("It is full")
-                continue
+        user_choice = input("Enter a choice: ")
+        if user_choice == "1":
+            print("\n")
+            if not fruits_linked_list.IsFull():
+                fruits_linked_list.AddNode()
             else:
-                fruitsList.AddNode()
-        elif option == "2":
-            fruitsList.Traversal()
-        elif option == "3":
-            fruitsList.DisplayLinkedList()
-        elif option == "4":
-            fruitsList.ReverseTraversal()
-        elif option == "5":
-            if fruitsList.IsEmpty():
-                print("No data in linked list. Nothing to remove.")
-                continue
-            fruitsList.RemoveNode()
-        elif option == "X":
+                print("List is full. \n")
+        elif user_choice == "2":
+            print("\n")
+            if not fruits_linked_list.IsEmpty():
+                fruits_linked_list.Traversal()
+            else:
+                print("Linked List is empty.")
+        elif user_choice == "3":
+            print("\n")
+            fruits_linked_list.OutputLinkedList()
+        elif user_choice == "4":
+            print("\n")
+            if not fruits_linked_list.IsEmpty():
+                fruits_linked_list.ReverseTraversal()
+            else:
+                print("Linked list is empty.")
+        elif user_choice == "X":
+            print("You chose eXit\n")
+            loop = False
             break
         else:
-            print("*** INVALID OPTION *** \nTry again")
+            print("You typed an Invalid option. Type again.\n")
+            continue
 
 
 main()

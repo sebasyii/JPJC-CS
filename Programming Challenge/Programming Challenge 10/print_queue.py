@@ -60,7 +60,7 @@ class PrintQueue:
 
     def output_print_job(self):
         if self.size() == 0:
-            
+
             return "Print Queue is empty!"
         else:
             print_job = self.__print_queue[self.__front]
