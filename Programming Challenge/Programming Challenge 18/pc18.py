@@ -31,7 +31,7 @@ class Hashtable:
 
             if (
                 self.__records[element].getPersonName() != ""
-                and self.__records[element].getPersonName() != ""
+                and self.__records[element].getTelephoneNumber() != ""
             ):
                 print(
                     "{0:^10} | {1:^25} | {2:<20}".format(
